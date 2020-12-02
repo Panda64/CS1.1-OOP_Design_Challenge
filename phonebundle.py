@@ -1,26 +1,15 @@
+from noteultra import NoteUltra
+
 class PhoneBundle:
     def __init__(self, num_phones, budget):
         self.num_phones = num_phones
         self.budget = float(budget)
         self.amount_due = 0
 
-    def pick_phone(self):
-        for phone in range(self.num_phones):
+    def pick_phone(self, phone, storage, color):
+        pass
         
-            while True:
-            
-                print("Please type the number corresponding to the type of phone you would like to buy. \n \
-                    1. Apple \n \
-                    2. Andriod")
-
-                user_choice = input()
-
-                if user_choice == "1":
-                    break
-                elif user_choice == "2":
-                    break
-                else:
-                    print("Please enter a valid option. Try again.")
+           
 
     def check_budget(self):
 
