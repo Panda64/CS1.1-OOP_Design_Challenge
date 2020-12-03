@@ -29,6 +29,7 @@ class NoteUltra:
         if self.storage in self.storage_options and self.color in self.available_colors:
             self.view_selection()
 
+    def get_current_price(self):
         return self.price
 
     def view_selection(self):

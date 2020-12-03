@@ -1,5 +1,6 @@
 from noteultra import NoteUltra
 from s20ultra import S20Ultra
+from iphone12 import IPhone12
 
 class PhoneBundle:
     def __init__(self, num_phones, budget):
@@ -7,9 +8,18 @@ class PhoneBundle:
         self.budget = float(budget)
         self.amount_due = 0
 
-    def pick_phone(self, phone, storage, color):
-        S20Ultra(storage, color)
-        
+    available_phones = ["note 20 ultra", "s20 ultra", "iphone 12"]
+    phone_classes = ["NoteUltra", "S20Ultra", "IPhone12"]
+
+    def pick_phone(self, phone_name, storage, color):
+        for phone in self.available_phones:
+            phone_index = self.available_phones.index(phone)
+            if phone_name == phone:
+                class_name = self.phone_classes[phone_index]
+                new_phone = eval(class_name)(storage, color)
+                
+                price = new_phone.get_current_price()
+                self.add_phone_price(price)
            
     def add_phone_price(self, phone_price):
         self.amount_due += phone_price
@@ -28,16 +38,18 @@ class PhoneBundle:
             amount_saved = self.amount_due * discount
             self.amount_due = self.amount_due - amount_saved
 
-            print(f"You purchased {self.num_phones} phones for {discount * 10} percent off your order. You saved ${amount_saved}!")
+            print(f"You purchased {self.num_phones} phones for {int(discount * 100)} percent off your order. \
+You saved ${round(amount_saved, 2)}!")
         
         difference = self.budget - self.amount_due
 
         if difference >= 0:
-            print(f"Congrats! You are within your budget with ${difference} to spare.")
+            print(f"Congrats! You are within your budget with ${round(difference, 2)} to spare.")
         else:
             positive_difference = difference * -1
 
             print(f"You are ${positive_difference} overbudget.")
 
-test = PhoneBundle(3, 2000)
-test.pick_phone("test", "128gb", "cosic grey")
+test = PhoneBundle(3, 3000)
+test.pick_phone("s20 ultra", "128gb", "cosmic grey")
+test.check_budget()
