@@ -1,4 +1,5 @@
 from noteultra import NoteUltra
+from s20ultra import S20Ultra
 
 class PhoneBundle:
     def __init__(self, num_phones, budget):
@@ -7,9 +8,11 @@ class PhoneBundle:
         self.amount_due = 0
 
     def pick_phone(self, phone, storage, color):
-        pass
+        S20Ultra(storage, color)
         
            
+    def add_phone_price(self, phone_price):
+        self.amount_due += phone_price
 
     def check_budget(self):
 
@@ -35,3 +38,6 @@ class PhoneBundle:
             positive_difference = difference * -1
 
             print(f"You are ${positive_difference} overbudget.")
+
+test = PhoneBundle(3, 2000)
+test.pick_phone("test", "128gb", "cosmic grey")
