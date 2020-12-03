@@ -31,25 +31,26 @@ class PhoneBundle:
         elif self.num_phones >= 10:
             amount_saved = self.amount_due * 0.15
             self.amount_due = self.amount_due - amount_saved
+            amount_saved = "{:.2f}".format(amount_saved)
 
             print(f"Maximum discount reached. Taking 15 percent off your original amount! You saved ${amount_saved}!")
         else:
             discount = (self.num_phones * 0.01) + 0.05
             amount_saved = self.amount_due * discount
             self.amount_due = self.amount_due - amount_saved
+            amount_saved = "{:.2f}".format(amount_saved)
 
             print(f"You purchased {self.num_phones} phones for {int(discount * 100)} percent off your order. \
-You saved ${round(amount_saved, 2)}!")
+You saved ${amount_saved}!")
         
         difference = self.budget - self.amount_due
+        difference = float("{:.2f}".format(difference))
 
         if difference >= 0:
-            print(f"Congrats! You are within your budget with ${round(difference, 2)} to spare.")
+            print(f"Congrats! You are within your budget with ${difference} to spare.")
         else:
             positive_difference = difference * -1
+            positive_difference = "{:.2f}".format(positive_difference)
 
             print(f"You are ${positive_difference} overbudget.")
 
-test = PhoneBundle(3, 3000)
-test.pick_phone("s20 ultra", "128gb", "cosmic grey")
-test.check_budget()
