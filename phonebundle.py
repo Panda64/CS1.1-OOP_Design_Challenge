@@ -40,4 +40,4 @@ class PhoneBundle:
             print(f"You are ${positive_difference} overbudget.")
 
 test = PhoneBundle(3, 2000)
-test.pick_phone("test", "128gb", "cosmic grey")
+test.pick_phone("test", "128gb", "cosic grey")

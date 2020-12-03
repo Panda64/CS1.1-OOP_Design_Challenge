@@ -5,31 +5,29 @@ class NoteUltra:
         self.color = color
         self.price = float(0)
         self.validate_choices()
-        self.view_selection()
+
+    storage_options = ["128gb", "512gb"]
+    storage_prices = [1299.99, 1399.99]
+    available_colors = ["mystic bronze", "mystic black", "mystic white"]
 
     def validate_choices(self):
-        storage1 = "128gb"
-        storage2 = "512gb"
 
-        color1 = "mystic bronze"
-        color2 = "mystic black"
-        color3 = "mystic white"
-
-        low_storage_price = 1299.99
-        high_storage_price = 1399.99
-
-        if self.storage == storage1:
-            self.price = low_storage_price
-        elif self.storage == storage2:
-            self.price = high_storage_price
-        else:
+        for option in self.storage_options:
+            storage_index = self.storage_options.index(option)
+            if self.storage == option:
+                self.price = self.storage_prices[storage_index]
+        
+        if self.storage not in self.storage_options:
             self.storage = "Invalid"
             print("Error. Invalid storage size entered. You will not be charged for this phone. Try again.")
 
-        if self.color != color1 and self.color != color2 and self.color != color3:
+        if self.color not in self.available_colors:
             self.color = "Invalid"
             self.price = 0
             print("Error. Invalid color entered. You will not be charged for this phone. Try again.")
+
+        if self.storage in self.storage_options and self.color in self.available_colors:
+            self.view_selection()
 
         return self.price
 
