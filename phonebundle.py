@@ -9,6 +9,7 @@ class PhoneBundle:
         self.amount_due = 0
 
     available_phones = ["note 20 ultra", "s20 ultra", "iphone 12"]
+    # phone_classes refer to the class name of each available phone
     phone_classes = ["NoteUltra", "S20Ultra", "IPhone12"]
 
     def pick_phone(self, phone_name, storage, color):

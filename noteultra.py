@@ -10,6 +10,7 @@ class NoteUltra:
     storage_prices = [1299.99, 1399.99]
     available_colors = ["mystic bronze", "mystic black", "mystic white"]
 
+    # This method makes sure that the options that were passed are valid available options of the phone
     def validate_choices(self):
 
         for option in self.storage_options:
